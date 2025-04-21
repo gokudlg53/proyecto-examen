@@ -29,7 +29,7 @@ void agregarPregunta(const string& nombreArchivo, int anioExamen) {
             cout << "Esta pregunta ya fue utilizada el anio pasado. No puede reutilizarse.\n";
             return;
         }
-        cout << "Nivel taxonomico (0 = Recordar, ..., 5 = Crear): ";
+        cout << "Nivel taxonomico (0 = Recordar, 1 = Comprender, 2 = Aplicar, 3 = Analizar, 4 = Evaluar, 5 = Crear): ";
         cin >> nivelInt;
         nivel = (NivelBloom)nivelInt;
         cout << "Anio de creacion: ";
