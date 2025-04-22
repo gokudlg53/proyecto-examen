@@ -1,8 +1,7 @@
-#include "pregunta.cpp"
-#include "prueba.cpp"
+#include "banco.h"
+#include "pregunta.h"
 #include <iostream>
 #include <string>
-
 //inicia el programa
 int main() {
     Prueba miPrueba;
@@ -24,11 +23,11 @@ int main() {
         limpiarConsola();
         //segun la opcion seleccionada actua el programa
         switch (opcion) {
-            case 1:
-                generarExamen(miPrueba);
+            case 1: 
+                miPrueba.generarExamen();
                 break;
             case 2:
-                mostrarPrueba(miPrueba);
+                miPrueba.mostrarPrueba();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
@@ -36,29 +35,29 @@ int main() {
                 int nivel;
                 cout << "Ingrese nivel (0=Recordar, 1=Comprender, 2=Aplicar, 3=Analizar, 4=Evaluar, 5=Crear): ";
                 cin >> nivel;
-                filtrarPorNivel(miPrueba, (NivelBloom)nivel);
+                miPrueba.filtrarPorNivel((NivelBloom)nivel);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             }
             case 4:
-                agregarPregunta(miPrueba);
+                miPrueba.agregarPregunta();
                 break;
             case 5:
-                editarPregunta(miPrueba);
+                miPrueba.editarPregunta();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             case 6:
-                mostrarTiempoTotal(miPrueba);
+                miPrueba.mostrarTiempoTotal();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             case 7:
-            eliminarPregunta(miPrueba);
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cin.get();
-            break;
+                miPrueba.eliminarPregunta();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.get();
+                break;
             case 8:
                 cout << "¡Hasta luego!\n";
                 break;
