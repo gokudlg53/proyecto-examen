@@ -1,4 +1,4 @@
-class BancoDePreguntas { //el Benja es puto 
+class BancoDePreguntas { //el Benja es putisimo 
 private:
     string archivoHistorial;
 
@@ -26,5 +26,10 @@ public:
         historial.close();
         return false;
     }
+    void registrarPregunta(const Pregunta& p) {
+        ofstream historial(archivoHistorial, ios::app);
+        if (!historial) return;
 
+        historial << "Pregunta: " << p.enunciado << "s\n"
+                  << "Tipo: " << (p.tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Selección Múltiple") << "s\n"
 
