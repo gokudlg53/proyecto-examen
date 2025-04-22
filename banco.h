@@ -1,17 +1,19 @@
-class BancoDePreguntas { //el Benja es putisimo 
+#ifndef BANCO_H
+#define BANCO_H
+#include <iostream>
+#include <fstream>
+#include <string>
+class BancoDePreguntas { 
 private:
     string archivoHistorial;
-
 public:
     BancoDePreguntas(string nombreArchivo = "historial_preguntas.txt") : archivoHistorial(nombreArchivo) {}
 
     bool seUsoEnAnioAnterior(const string& enunciado, int anioActual) {
         ifstream historial(archivoHistorial);
         if (!historial.is_open()) return false;
-
         string linea, preguntaEncontrada;
         int anioEncontrado = -1;
-
          while(getline(historial, linea)) {
             if (linea.find("Pregunta: ") == 0) {
                 preguntaEncontrada = linea.substr(10);
@@ -23,8 +25,6 @@ public:
                 }
             }
         }
-        historial.close();
         return false;
-    }
-    
-    
+    };
+#endif
