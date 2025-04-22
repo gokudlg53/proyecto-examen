@@ -26,10 +26,19 @@ public:
         historial.close();
         return false;
     }
-    void registrarPregunta(const Pregunta& p) {
+     void registrarPregunta(const Pregunta& p) {
         ofstream historial(archivoHistorial, ios::app);
-        if (!historial) return;
+        if (!historial) {
+            cerr << "Error al abrir el archivo de historial" << endl;
+            return;
+        }
 
         historial << "Pregunta: " << p.enunciado << "s\n"
-                  << "Tipo: " << (p.tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Selección Múltiple") << "s\n"
+                  << "Tipo: " << tipoComoTexto(p.tipo) << "s\n"
+                  << "Nivel: " << p.nivel << "s\n"
+                  << "Año: " << p.anioCreacion << "s\n"
+                  << "Tiempo: " << p.tiempoEstimadoSegundos << "s\n";
 
+        for (int i = 0; i < p.cantidadOpciones; ++i) {
+            historial << "  Opción " << i << ": " << p.opciones[i] << "s\n";
+    
