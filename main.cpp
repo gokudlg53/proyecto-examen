@@ -1,8 +1,7 @@
+#include "pregunta.h"
+#include "prueba.h"
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <limits>
-#include <cstdlib>
 
 //inicia el programa
 int main() {
