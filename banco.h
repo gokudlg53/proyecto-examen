@@ -28,5 +28,5 @@ public:
         }
         return false;
     }
-}
+};
 #endif
