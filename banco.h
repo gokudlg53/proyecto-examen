@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+using namespace std;
 class BancoDePreguntas { 
 private:
     string archivoHistorial;
@@ -26,5 +27,6 @@ public:
             }
         }
         return false;
-    };
+    }
+}
 #endif
