@@ -152,7 +152,7 @@ void generarExamen(Prueba& prueba) {
     archivo << "Asignatura: " << prueba.asignatura << "\n";
     archivo << "Anio del examen: " << prueba.anioExamen << "\n\n";
     do {
-        agregarPregunta(prueba);
+        agregarPregunta(prueba,anioExamen);
         cout << "¿Desea agregar otra pregunta? (s/n): ";
         cin >> crearOtraPregunta;
     } while (crearOtraPregunta == 's' || crearOtraPregunta == 'S');
