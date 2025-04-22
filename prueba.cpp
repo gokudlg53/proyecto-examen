@@ -9,13 +9,13 @@
 using namespace std;
 class Prueba{
 private:
-    int tiempoTotal = 0;
     Pregunta preguntas[MAX_PREGUNTAS];
     int cantidadPreguntas = 0;
-    string nombreArchivo;
-    int anioExamen;
     string asignatura;
 public:
+    int tiempoTotal = 0;
+    string nombreArchivo;
+    int anioExamen;
 void limpiarConsola() {
     #ifdef _WIN32
         system("cls");
