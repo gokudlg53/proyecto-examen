@@ -8,6 +8,7 @@
 #include <cstdlib>
 using namespace std;
 class Prueba{
+    static const int MAX_PREGUNTAS = 100;
 private:
     Pregunta preguntas[MAX_PREGUNTAS];
     int cantidadPreguntas = 0;
@@ -16,6 +17,20 @@ public:
     int tiempoTotal = 0;
     string nombreArchivo;
     int anioExamen;
+string tipoComoTexto(TipoPregunta tipo) {
+    return tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Seleccion Multiple";
+}
+string nivelComoTexto(NivelBloom nivel) {
+    switch (nivel) {
+        case RECORDAR: return "Recordar";
+        case COMPRENDER: return "Comprender";
+        case APLICAR: return "Aplicar";
+        case ANALIZAR: return "Analizar";
+        case EVALUAR: return "Evaluar";
+        case CREAR: return "Crear";
+    }
+    return "";
+}
 void limpiarConsola() {
     #ifdef _WIN32
         system("cls");
