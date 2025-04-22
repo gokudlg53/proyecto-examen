@@ -1,5 +1,5 @@
-#include "pregunta.h"
-#include "prueba.h"
+#include "pregunta.cpp"
+#include "prueba.cpp"
 #include <iostream>
 #include <string>
 
