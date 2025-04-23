@@ -166,6 +166,7 @@ void generarExamen(Prueba& prueba) {
     archivo << "Asignatura: " << prueba.asignatura << "\n";
     archivo << "Anio del examen: " << prueba.anioExamen << "\n\n";
     do {
+        prueba.cantidadPreguntas++;
         p.agregarPregunta(nombreArchivo, anioExamen);
         cout << "¿Desea agregar otra pregunta? (s/n): ";
         cin >> crearOtraPregunta;
