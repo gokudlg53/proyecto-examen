@@ -3,10 +3,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <banco.h>
+#include "banco.h"
 using namespace std;
 enum NivelBloom { RECORDAR, COMPRENDER, APLICAR, ANALIZAR, EVALUAR, CREAR };
 enum TipoPregunta { VERDADERO_FALSO, SELECCION_MULTIPLE };
+inline string tipoComoTexto(TipoPregunta tipo) {
+    return tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Seleccion Multiple";
+}
 class Pregunta{
 public:
     string enunciado;
@@ -17,15 +20,16 @@ public:
     string opciones[5]; // máximo 5 opciones
     int cantidadOpciones;
     int indiceRespuestaCorrecta;
-void agregarPregunta(const string& nombreArchivo, int anioExamen) {
+    void agregarPregunta(const string& nombreArchivo, int anioExamen) {
         int tipoInt, nivelInt;
+        BancoDePreguntas banco;
         cout << "Tipo de pregunta (0 = Verdadero/Falso, 1 = Seleccion Multiple): ";
         cin >> tipoInt;
         tipo = (TipoPregunta)tipoInt;
         cout << "Ingrese el enunciado de la pregunta:\n";
         cin.ignore();
         getline(cin, enunciado);
-        if (seUsoEnAnioAnterior(enunciado, anioExamen)) {
+        if (banco.seUsoEnAnioAnterior(enunciado, anioExamen)) {
             cout << "Esta pregunta ya fue utilizada el anio pasado. No puede reutilizarse.\n";
             return;
         }
