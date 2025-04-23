@@ -5,7 +5,8 @@
 //inicia el programa
 int main() {
     Pregunta p;
-    Prueba miPrueba;
+    Prueba Pr;
+    string miPrueba
     int opcion;
     string examen;
     int fecha;
@@ -23,14 +24,14 @@ int main() {
         cout << "8. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
-        miPrueba.limpiarConsola();
+        Pr.limpiarConsola();
         //segun la opcion seleccionada actua el programa
         switch (opcion) {
             case 1: 
-                miPrueba.generarExamen(miPrueba);
+                Pr.generarExamen(miPrueba);
                 break;
             case 2:
-                miPrueba.mostrarPrueba(miPrueba);
+                Pr.mostrarPrueba(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
@@ -38,7 +39,7 @@ int main() {
                 int nivel;
                 cout << "Ingrese nivel (0=Recordar, 1=Comprender, 2=Aplicar, 3=Analizar, 4=Evaluar, 5=Crear): ";
                 cin >> nivel;
-                miPrueba.filtrarPorNivel(miPrueba,(NivelBloom)nivel);
+                Pr.filtrarPorNivel(miPrueba,(NivelBloom)nivel);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
@@ -51,17 +52,17 @@ int main() {
                 p.agregarPregunta(examen,fecha);
                 break;
             case 5:
-                miPrueba.editarPregunta(miPrueba);
+                Pr.editarPregunta(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             case 6:
-                miPrueba.mostrarTiempoTotal(miPrueba);
+                Pr.mostrarTiempoTotal(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             case 7:
-                miPrueba.eliminarPregunta(miPrueba);
+                Pr.eliminarPregunta(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
