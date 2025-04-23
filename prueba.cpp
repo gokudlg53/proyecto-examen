@@ -1,11 +1,11 @@
 #ifndef PRUEBA_H
-#define PRUEBA_H
-#include "pregunta.cpp"
+#define PRUEBA_H 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <limits>
 #include <cstdlib>
+#include "pregunta.h"
 using namespace std;
 class Prueba{
     static const int MAX_PREGUNTAS = 100;
@@ -17,9 +17,7 @@ public:
     int tiempoTotal = 0;
     string nombreArchivo;
     int anioExamen;
-string tipoComoTexto(TipoPregunta tipo) {
-    return tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Seleccion Multiple";
-}
+
 string nivelComoTexto(NivelBloom nivel) {
     switch (nivel) {
         case RECORDAR: return "Recordar";
@@ -152,6 +150,7 @@ void generarExamen(Prueba& prueba) {
     char crearOtraPregunta;
     int anioExamen;
     string asignatura;
+    Pregunta p;
     // Solicitar nombre de archivo
     cout << "Ingrese nombre para el archivo de examen: ";
     cin >> nombreArchivo;
@@ -167,7 +166,7 @@ void generarExamen(Prueba& prueba) {
     archivo << "Asignatura: " << prueba.asignatura << "\n";
     archivo << "Anio del examen: " << prueba.anioExamen << "\n\n";
     do {
-        agregarPregunta(prueba,anioExamen);
+        p.agregarPregunta(nombreArchivo, anioExamen);
         cout << "¿Desea agregar otra pregunta? (s/n): ";
         cin >> crearOtraPregunta;
     } while (crearOtraPregunta == 's' || crearOtraPregunta == 'S');
