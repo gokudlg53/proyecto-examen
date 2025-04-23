@@ -45,11 +45,11 @@ int main() {
                 break;
             }
             case 4:
-                cout<<"que examen quiere agregar pregunta?";
+                cout<<"Que examen quiere agregar pregunta?";
                 cin >> examen;
-                cout<<"año?";
+                cout<<"Anio?";
                 cin >> fecha;
-                p.agregarPregunta(examen,fecha);
+                p.agregarPregunta(examen, fecha);
                 break;
             case 5:
                 Pr.editarPregunta(miPrueba);
