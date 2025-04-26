@@ -5,8 +5,7 @@
 //inicia el programa
 int main() {
     Pregunta p;
-    Prueba Pr;
-    string miPrueba
+    Prueba miPrueba;
     int opcion;
     string examen;
     int fecha;
@@ -24,14 +23,14 @@ int main() {
         cout << "8. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
-        Pr.limpiarConsola();
+        miPrueba.limpiarConsola();
         //segun la opcion seleccionada actua el programa
         switch (opcion) {
             case 1: 
-                Pr.generarExamen(miPrueba);
+                miPrueba.generarExamen(miPrueba);
                 break;
             case 2:
-                Pr.mostrarPrueba(miPrueba);
+                miPrueba.mostrarPrueba(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
@@ -39,30 +38,31 @@ int main() {
                 int nivel;
                 cout << "Ingrese nivel (0=Recordar, 1=Comprender, 2=Aplicar, 3=Analizar, 4=Evaluar, 5=Crear): ";
                 cin >> nivel;
-                Pr.filtrarPorNivel(miPrueba,(NivelBloom)nivel);
+                miPrueba.filtrarPorNivel(miPrueba,(NivelBloom)nivel);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             }
             case 4:
-                cout<<"Que examen quiere agregar pregunta?";
+                cout<<"que examen quiere agregar pregunta?";
                 cin >> examen;
-                cout<<"Anio?";
+                examen += ".txt";
+                cout<<"año?";
                 cin >> fecha;
-                p.agregarPregunta(examen, fecha);
+                p.agregarPregunta(examen,fecha);
                 break;
             case 5:
-                Pr.editarPregunta(miPrueba);
+                miPrueba.editarPregunta(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             case 6:
-                Pr.mostrarTiempoTotal(miPrueba);
+                miPrueba.mostrarTiempoTotal(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
             case 7:
-                Pr.eliminarPregunta(miPrueba);
+                miPrueba.eliminarPregunta(miPrueba);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.get();
                 break;
