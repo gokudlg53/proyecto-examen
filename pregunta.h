@@ -10,12 +10,13 @@ enum TipoPregunta { VERDADERO_FALSO, SELECCION_MULTIPLE };
 inline string tipoComoTexto(TipoPregunta tipo) {
     return tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Seleccion Multiple";
 }
+inline int tiempoTotal;
 class Pregunta{
 public:
-    string enunciado;
     TipoPregunta tipo;
-    NivelBloom nivel;
     int anioCreacion;
+    string enunciado;
+    NivelBloom nivel;
     int tiempoEstimadoSegundos;
     string opciones[5]; // máximo 5 opciones
     int cantidadOpciones;
@@ -23,6 +24,7 @@ public:
     void agregarPregunta(const string& nombreArchivo, int anioExamen) {
         int tipoInt, nivelInt;
         BancoDePreguntas banco;
+        ofstream archivo(nombreArchivo, ios::app);
         cout << "Tipo de pregunta (0 = Verdadero/Falso, 1 = Seleccion Multiple): ";
         cin >> tipoInt;
         tipo = (TipoPregunta)tipoInt;
@@ -40,7 +42,7 @@ public:
         cin >> anioCreacion;
         cout << "Tiempo estimado para esta pregunta (en segundos): ";
         cin >> tiempoEstimadoSegundos;
-        ofstream archivo(nombreArchivo, ios::app);
+        tiempoTotal=+tiempoEstimadoSegundos;
         archivo << "Pregunta: " << enunciado << "\n";
         archivo << "Tipo: " << (tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Seleccion Multiple") << "\n";
         archivo << "Nivel: " << nivelInt << "\n";
