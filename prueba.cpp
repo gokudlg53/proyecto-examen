@@ -14,7 +14,6 @@ private:
     int cantidadPreguntas = 0;
     string asignatura;
 public:
-    int tiempoTotal = 0;
     string nombreArchivo;
     int anioExamen;
 
@@ -46,6 +45,7 @@ void mostrarPrueba(const Prueba& prueba) {
         cout << "Error al abrir el archivo del examen.\n";
         return;
     }
+    
 string linea;
 while (getline(archivo, linea)) {
     cout << linea << endl;
@@ -53,8 +53,9 @@ while (getline(archivo, linea)) {
 archivo.close();
 }
 void mostrarTiempoTotal(const Prueba& prueba) {
+    Pregunta p;
     cout << "\nTiempo total estimado para completar el examen: "
-    << prueba.tiempoTotal / 60 << " minutos.\n";
+    << tiempoTotal / 60 << " minutos.\n";
 }
 //edita una pregunta del examen en caso contrario dice que no hay preguntas para editar
 void editarPregunta(Prueba& prueba) {
@@ -151,6 +152,7 @@ void generarExamen(Prueba& prueba) {
     int anioExamen;
     string asignatura;
     Pregunta p;
+    prueba.cantidadPreguntas=0;
     // Solicitar nombre de archivo
     cout << "Ingrese nombre para el archivo de examen: ";
     cin >> nombreArchivo;
@@ -165,9 +167,11 @@ void generarExamen(Prueba& prueba) {
     archivo << "nombreExamen: " << nombreArchivo << "\n";
     archivo << "Asignatura: " << prueba.asignatura << "\n";
     archivo << "Anio del examen: " << prueba.anioExamen << "\n\n";
+    archivo.close();
     do {
-        prueba.cantidadPreguntas++;
         p.agregarPregunta(nombreArchivo, anioExamen);
+        prueba.preguntas[prueba.cantidadPreguntas] = p;
+        prueba.cantidadPreguntas++;
         cout << "¿Desea agregar otra pregunta? (s/n): ";
         cin >> crearOtraPregunta;
     } while (crearOtraPregunta == 's' || crearOtraPregunta == 'S');
@@ -194,7 +198,7 @@ void eliminarPregunta(Prueba& prueba) {
         cout << "Numero invalido.\n";
         return;
     }
-    prueba.tiempoTotal -= prueba.preguntas[numero - 1].tiempoEstimadoSegundos;
+    tiempoTotal -= prueba.preguntas[numero - 1].tiempoEstimadoSegundos;
     for (int i = numero - 1; i < prueba.cantidadPreguntas - 1; ++i) {
         prueba.preguntas[i] = prueba.preguntas[i + 1];
     }
