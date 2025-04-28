@@ -44,10 +44,10 @@ int main() {
                 break;
             }
             case 4:
-                cout<<"que examen quiere agregar pregunta?";
+                cout<<"Que examen quiere agregar pregunta?";
                 cin >> examen;
                 examen += ".txt";
-                cout<<"año?";
+                cout<<"anio?";
                 cin >> fecha;
                 p.agregarPregunta(examen,fecha);
                 break;
