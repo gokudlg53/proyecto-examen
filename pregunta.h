@@ -42,7 +42,7 @@ public:
         cin >> anioCreacion;
         cout << "Tiempo estimado para esta pregunta (en segundos): ";
         cin >> tiempoEstimadoSegundos;
-        tiempoTotal=+tiempoEstimadoSegundos;
+        tiempoTotal+=tiempoEstimadoSegundos;
         archivo << "Pregunta: " << enunciado << "\n";
         archivo << "Tipo: " << (tipo == VERDADERO_FALSO ? "Verdadero/Falso" : "Seleccion Multiple") << "\n";
         archivo << "Nivel: " << nivelInt << "\n";
